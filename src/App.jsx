@@ -1,33 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Navigate, Route, Routes } from 'react-router-dom';
+import './App.css';
+import { IntlProvider } from 'react-intl'
+import { useState } from 'react';
+import { LOCALES } from "./i18n/locales";
+import { messages } from "./i18n/messages";
+
+//pages
+import { EmailPage } from './pages/EmailPage';
+import { ResultPage } from './pages/ResultPage';
+import { NotFoundPage } from './pages/NotFoundPage';
+import { QuizPage } from './pages/QuizPage';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [currentLocale, setCurrentLocale] = useState(getInitialLocal());
+
+  function getInitialLocal() {
+    const savedLocale = localStorage.getItem("locale");
+    return savedLocale || LOCALES.ENGLISH;
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <IntlProvider
+        messages={messages[currentLocale]}
+        locale={currentLocale}
+        defaultLocale={LOCALES.ENGLISH}
+      >
+        <Routes>
+          <Route path="/" element={<Navigate to="/quiz/1" replace />} />
+          <Route
+            path="/quiz/:id"
+            element={<QuizPage currentLocale={currentLocale} setCurrentLocale={setCurrentLocale} />}
+          />
+
+          <Route path="/email" element={<EmailPage />} />
+          <Route path="/result" element={<ResultPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </IntlProvider>
     </>
   )
 }
