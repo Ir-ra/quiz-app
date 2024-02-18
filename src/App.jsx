@@ -2,14 +2,13 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { IntlProvider } from 'react-intl'
 import { useState } from 'react';
-import { LOCALES } from "./i18n/locales";
-import { messages } from "./i18n/messages";
+import { LOCALES } from "./localization/locales";
+import { messages } from "./localization/messages";
+
+import { AnswerProvider } from './context/AnswerContext';
 
 //pages
-import { EmailPage } from './pages/EmailPage';
-import { ResultPage } from './pages/ResultPage';
-import { NotFoundPage } from './pages/NotFoundPage';
-import { QuizPage } from './pages/QuizPage';
+import { EmailPage, NotFoundPage, QuizPage, ThankYou } from './pages';
 
 function App() {
   const [currentLocale, setCurrentLocale] = useState(getInitialLocal());
@@ -26,17 +25,18 @@ function App() {
         locale={currentLocale}
         defaultLocale={LOCALES.ENGLISH}
       >
-        <Routes>
-          <Route path="/" element={<Navigate to="/quiz/1" replace />} />
-          <Route
-            path="/quiz/:id"
-            element={<QuizPage currentLocale={currentLocale} setCurrentLocale={setCurrentLocale} />}
-          />
-
-          <Route path="/email" element={<EmailPage />} />
-          <Route path="/result" element={<ResultPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+        <AnswerProvider>
+          <Routes>
+            <Route path="/" element={<Navigate to="/quiz/1" replace />} />
+            <Route
+              path="/quiz/:id"
+              element={<QuizPage currentLocale={currentLocale} setCurrentLocale={setCurrentLocale} />}
+            />
+            <Route path="/email" element={<EmailPage />} />
+            <Route path="/result" element={<ThankYou />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </AnswerProvider>
       </IntlProvider>
     </>
   )

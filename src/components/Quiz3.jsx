@@ -1,24 +1,35 @@
-import { NavLink } from "react-router-dom"
 import usePagePath from "../hooks/usePagePath";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import { FormattedMessage, useIntl } from "react-intl";
+import { AnswerContext } from "../context/AnswerContext";
+import { useContext } from "react";
+import { SingleSelectButton } from "./SingleSelectButton/SingleSelectButton";
 
 export const Quiz3 = () => {
   const { route, id } = usePagePath();
-  const [answers] = useLocalStorage('quizAnswers', {});
-  console.log(answers)
+  const intl = useIntl();
+  const { saveAnswerToLocalStorage } = useContext(AnswerContext)
+
+  const ages = ['18-29', '30-39', '40-49', '50+'];
+
+  const handleAgeClick = (selectedAge) => {
+    saveAnswerToLocalStorage(id, selectedAge, 'single-select')
+  }
 
   return (
     <div>
-     
-     {id}
+      <p>
+        <FormattedMessage id="question3" />
+      </p>
 
-      <ul>
-        <li>
-          <NavLink to={route}>
-          {`link to Quiz ${+id + 1}`}
-          </NavLink>
-        </li>
-      </ul>
+      {ages.map(age => (
+        <div key={age}>
+          <SingleSelectButton
+            item={age === '50+' ? age : `${age} ${intl.messages.years}`}
+            route={route}
+            onClickHandler={() => handleAgeClick(age)}
+          />
+        </div>
+      ))}
     </div>
   )
 }

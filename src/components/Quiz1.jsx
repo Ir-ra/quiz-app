@@ -1,10 +1,14 @@
-import { NavLink } from "react-router-dom"
 import usePagePath from "../hooks/usePagePath";
-import { LOCALES } from "../i18n/locales";
 import PropTypes from 'prop-types';
+import { useContext } from "react";
+import { AnswerContext } from "../context/AnswerContext";
+import { SingleSelectButton } from "./SingleSelectButton/SingleSelectButton";
+import { FormattedMessage } from "react-intl";
+import { getLocaleFromLanguage } from "../localization/localesUtils";
 
-export const Quiz1 = ({ currentLocale, setCurrentLocale, onSave }) => {
+export const Quiz1 = ({ currentLocale, setCurrentLocale }) => {
   const { route, id } = usePagePath();
+  const { saveAnswerToLocalStorage } = useContext(AnswerContext)
   const languages = ['english', 'french', 'german', 'spanish'];
 
   const handleLang = (locale, e) => {
@@ -12,48 +16,29 @@ export const Quiz1 = ({ currentLocale, setCurrentLocale, onSave }) => {
     localStorage.setItem("locale", locale);
 
     setCurrentLocale(e.target.value);
-    localStorage.setItem("locale", e.target.value);
   };
 
-  const getLocaleFromLanguage = (language) => {
-    switch (language) {
-      case 'english':
-        return LOCALES.ENGLISH;
-      case 'french':
-        return LOCALES.FRENCH;
-      case 'german':
-        return LOCALES.GERMAN;
-      case 'spanish':
-        return LOCALES.SPANISH;
-      default:
-        return LOCALES.ENGLISH;
-    }
-  };
-
-  const handleLanguageClick = (lang, saveAnswerToLocalStorage, handleLang) => {
+  const handleLanguageClick = (lang) => {
     const locale = getLocaleFromLanguage(lang);
-    saveAnswerToLocalStorage(lang);
+    saveAnswerToLocalStorage(id, lang, 'single-select');
     handleLang(locale);
   };
 
-
-
   return (
     <div>
-      {id}
       <p>
-        What is your preferred language?
+        <FormattedMessage id="question1" />
       </p>
 
       {languages.map(lang => (
         <div key={lang}>
-          <NavLink
-            to={route}
-            onClick={() => handleLanguageClick(lang, onSave, handleLang)}
-            selected={currentLocale === getLocaleFromLanguage(lang)}
-          >
-            {lang}
-          </NavLink>
+          <SingleSelectButton
+            item={lang}
+            route={route}
+            onClickHandler={handleLanguageClick}
+            currentLocale={currentLocale}
+            getLocaleFromLanguage={getLocaleFromLanguage}
+          />
         </div>
       ))}
     </div>
@@ -63,6 +48,4 @@ export const Quiz1 = ({ currentLocale, setCurrentLocale, onSave }) => {
 Quiz1.propTypes = {
   currentLocale: PropTypes.string.isRequired,
   setCurrentLocale: PropTypes.func.isRequired,
-  question: PropTypes.string,
-  onSave: PropTypes.func
 };

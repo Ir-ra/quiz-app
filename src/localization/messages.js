@@ -52,16 +52,17 @@ export const messages = {
     email_policy: 'By continuing I agree with Privacy policy and Terms of use.',
 
     // resuls
-    last_thanks: 'Thank you',
-    last_thanks_sub: 'for supporting us and passing quiz',
-    last_load: 'Download my answers',
-    last_retake: 'Retake quiz'
+    thanks: 'Thank you',
+    thanks_sub: 'for supporting us and passing quiz',
+    thanks_load: 'Download my answers',
+    thanks_retake: 'Retake quiz'
   },
   [LOCALES.FRENCH]: {
     next: `Suivant`,
 
     // questions
-    question1: `Quelle est votre langue préférée?`,
+    // question1: `Quelle est votre langue préférée?`,
+    question1: `What is your preferred language?`,
     question2: `À quel genre vous identifiez-vous?`,
     question3: `Quel est votre âge?`,
     question4: `Qu'est-ce que vous détestez le plus dans un livre?`,
@@ -108,16 +109,17 @@ export const messages = {
     email_policy: `En continuant, j'accepte la politique de confidentialité et les conditions d'utilisation.`,
 
     // resuls
-    last_thanks: `Merci`,
-    last_thanks_sub: `pour nous avoir soutenu et avoir réussi le quiz`,
-    last_load: `Télécharger mes réponses`,
-    last_retake: `Reprendre le quiz`
+    thanks: `Merci`,
+    thanks_sub: `pour nous avoir soutenu et avoir réussi le quiz`,
+    thanks_load: `Télécharger mes réponses`,
+    thanks_retake: `Reprendre le quiz`
   },
   [LOCALES.GERMAN]: {
     next: `Weiter`,
 
     // questions
-    question1: `Was ist Ihre bevorzugte Sprache?`,
+    // question1: `Was ist Ihre bevorzugte Sprache?`,
+    question1: `What is your preferred language?`,
     question2: `Mit welchem Geschlecht identifizieren Sie sich?`,
     question3: `Wie alt sind Sie?`,
     question4: `Was hasst du an einem Buch am meisten?`,
@@ -164,16 +166,17 @@ export const messages = {
     email_policy: `Indem ich fortfahre, stimme ich den Datenschutzbestimmungen und Nutzungsbedingungen zu.`,
 
     // resuls
-    last_thanks: `Danke`,
-    last_thanks_sub: `für deine Unterstützung und das Bestehen des Quiz`,
-    last_load: `Meine Antworten herunterladen`,
-    last_retake: `Quiz wiederholen`
+    thanks: `Danke`,
+    thanks_sub: `für deine Unterstützung und das Bestehen des Quiz`,
+    thanks_load: `Meine Antworten herunterladen`,
+    thanks_retake: `Quiz wiederholen`
   },
   [LOCALES.SPANISH]: {
     next: `Siguiente`,
 
     // questions
-    question1: `¿Cuál es tu idioma preferido?`,
+    // question1: `¿Cuál es tu idioma preferido?`,
+    question1: `What is your preferred language?`,
     question2: `Con qué género te identificas?`,
     question3: `¿Cuál es tu edad?`,
     question4: `¿Qué es lo que más odias en un libro?`,
@@ -220,9 +223,9 @@ export const messages = {
     email_policy: `Al continuar, acepto la Política de privacidad y los Términos de uso.`,
 
     // resuls
-    last_thanks: `Gracias`,
-    last_thanks_sub: `por apoyarnos y aprobar el examen`,
-    last_load: `Descargar mis respuestas`,
-    last_retake: `Volver a realizar el examen`
+    thanks: `Gracias`,
+    thanks_sub: `por apoyarnos y aprobar el examen`,
+    thanks_load: `Descargar mis respuestas`,
+    thanks_retake: `Volver a realizar el examen`
   }
 }
