@@ -9,7 +9,7 @@ import { Quiz5 } from '../components/Quiz5';
 
 import { NotFoundPage } from "./NotFoundPage";
 import { useEffect, useState } from "react";
-import { LineLoader } from "../components/Loaders/LineLoader";
+import { Header } from "../components/Header/Header";
 
 export const QuizPage = ({ currentLocale, setCurrentLocale }) => {
   const [showLoading, setShowLoading] = useState(true);
@@ -33,15 +33,7 @@ export const QuizPage = ({ currentLocale, setCurrentLocale }) => {
 
   return (
     <div>
-      {showLoading ? (
-        <>
-          <p>{`${id}/5`}</p>
-          <div style={{width: '400px'}}>
-            <LineLoader progress={progress} />
-          </div>
-        </>
-      ) : ''}
-
+      {showLoading && <Header progress={progress}/>}
 
       {quizContent}
     </div>

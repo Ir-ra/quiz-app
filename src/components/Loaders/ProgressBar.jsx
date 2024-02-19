@@ -1,4 +1,4 @@
-export const LineLoader = ({ progress }) => {
+export const ProgressBar = ({ progress }) => {
 
   return (
     <div className="lineLoader-container">
