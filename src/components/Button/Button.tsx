@@ -1,13 +1,16 @@
 import React from 'react';
+import { MainBtnStyles } from './Button.styled';
 
-export const Button = ({ title, onClick, buttonType }) => {
+export const Button = ({ title, onClick, buttonType, styles, disabled }) => {
   return (
-    <button
+    <MainBtnStyles
       type={buttonType}
       className=''
       onClick={onClick}
+      $btntype={styles}
+      disabled={disabled}
     >
       {title}
-    </button>
+    </MainBtnStyles>
   );
 };

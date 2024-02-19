@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
+import { SubText } from "./SubText/SubText";
 
 export const CircleLoader = () => {
   const [progress, setProgress] = useState(0);
@@ -54,7 +55,7 @@ export const CircleLoader = () => {
             
             stroke="#76e5b1"
             style={{
-              strokeDasharray: '126', // (2 * Pi * радіус)
+              strokeDasharray: '126',
               strokeDashoffset: `${126 - (progress / 100) * 126}`,
             }}
           />
@@ -64,7 +65,7 @@ export const CircleLoader = () => {
         <span className="loader-text">{progress}%</span>
       </div>
 
-      <FormattedMessage id="loading" />
+      <SubText title={<FormattedMessage id="loading" />}/>
     </div>
   )
 }

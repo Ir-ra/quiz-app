@@ -19,6 +19,7 @@ export const messages = {
     q_1_se: `Spanish`,
 
     // page 2
+    q_2_sub: `Please share how do you identify yourself`,
     q_2_opt1: `Female`,
     q_2_opt2: `Male`,
     q_2_opt3: `Other`,
@@ -76,6 +77,7 @@ export const messages = {
     q_1_se: `Espagnol`,
 
     // page 2
+    q_2_sub: `Veuillez partager comment vous identifiez-vous`,
     q_2_opt1: `Femme`,
     q_2_opt2: `Homme`,
     q_2_opt3: `Autre`,
@@ -133,6 +135,7 @@ export const messages = {
     q_1_se: `Spanisch`,
 
     // page 2
+    q_2_sub: `Bitte teilen Sie uns mit, wie Sie sich identifizieren`,
     q_2_opt1: `Weiblich`,
     q_2_opt2: `Männlich`,
     q_2_opt3: `Andere`,
@@ -190,6 +193,7 @@ export const messages = {
     q_1_se: `Español`,
 
     // page 2
+    q_2_sub: `Por favor comparte como te identificas`,
     q_2_opt1: `Mujer`,
     q_2_opt2: `Hombre`,
     q_2_opt3: `Otro`,

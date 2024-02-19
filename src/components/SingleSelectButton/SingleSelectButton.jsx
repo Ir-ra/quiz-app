@@ -1,31 +1,22 @@
-import { NavLink } from "react-router-dom";
 import PropTypes from 'prop-types';
+import { SelectStyles, Selectlink } from "./SingleSelectButton.styled";
 
 export const SingleSelectButton = ({
   item,
   route,
   onClickHandler,
-  // iconContent,
-
-  // genders
+  type
 }) => {
 
-  console.log();
-
   return (
-    <>
-      <NavLink
+    <SelectStyles $type={type}>
+      <Selectlink
         to={route}
         onClick={() => onClickHandler(item)}
       >
-        {/* {genders && genders.includes(item) && (
-          iconContent
-        )} */}
-
         {item}
-      </NavLink>
-
-    </>
+      </Selectlink>
+    </SelectStyles>
   )
 }
 
@@ -33,5 +24,4 @@ SingleSelectButton.propTypes = {
   item: PropTypes.any,
   route: PropTypes.string.isRequired,
   onClickHandler: PropTypes.func.isRequired,
- 
 };

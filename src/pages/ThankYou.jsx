@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { generateCVSFile } from "../utils/cvs";
 import { Button } from "../components/Button/Button";
 import checkmark from '../assets/checkmark-144.svg';
+import { SubText } from "../components/SubText/SubText";
 
 export const ThankYou = () => {
   const { clearAnswers, clearEmail } = useContext(AnswerContext);
@@ -18,33 +19,29 @@ export const ThankYou = () => {
   };
 
   const { email, answers } = useContext(AnswerContext);
-  console.log('email', email)
-  console.log('answers', answers)
 
   const handleDownloadCSV = () => {
     generateCVSFile(email, answers)
   }
   return (
     <>
-      <p>
-        <FormattedMessage id="thanks" />
-        <br></br>
-        <FormattedMessage id="thanks_sub" />
-
-
-        <img src={checkmark} alt="" />
-
-        <button onClick={handleDownloadCSV}>
-          <FormattedMessage id="thanks_load" />
-        </button>
-
-
-        <Button
-          buttonType='button'
-          title={<FormattedMessage id="thanks_retake" />}
-          onClick={handleRetakeQuiz}
-        />
-      </p>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <p id="thank"><FormattedMessage id="thanks" /></p>
+          <br></br>
+          
+          <SubText title={<FormattedMessage id="thanks_sub" />}/>
+          
+          <img src={checkmark} alt="" />
+          <button onClick={handleDownloadCSV}>
+            <SubText title={<FormattedMessage id="thanks_load" />}/>
+          </button>
+          
+          <Button
+            buttonType='button'
+            title={<FormattedMessage id="thanks_retake" />}
+            onClick={handleRetakeQuiz}
+          />
+        </div>
     </>
   )
 }

@@ -1,12 +1,13 @@
+import { ProgressContainer, ProgressLine } from "./ProgressBar.styled";
+
 export const ProgressBar = ({ progress }) => {
 
   return (
-    <div className="lineLoader-container">
-      <div
+    <ProgressContainer>
+      <ProgressLine
         className="lineLoader"
         style={{ width: `${progress}%` }}
-      >
-      </div>
-    </div>
+      />
+    </ProgressContainer>
   );
 }

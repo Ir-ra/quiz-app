@@ -1,10 +1,15 @@
-import usePagePath from "../hooks/usePagePath";
+import usePagePath from "../../hooks/usePagePath";
 import PropTypes from 'prop-types';
-import { useContext } from "react";
-import { AnswerContext } from "../context/AnswerContext";
-import { SingleSelectButton } from "./SingleSelectButton/SingleSelectButton";
+import { Fragment, useContext, useState } from "react";
+import { AnswerContext } from "../../context/AnswerContext";
 import { FormattedMessage, useIntl } from "react-intl";
-import { LOCALES } from "../localization/locales";
+import { LOCALES } from "../../localization/locales";
+
+import { SingleSelectButton } from "../SingleSelectButton/SingleSelectButton";
+import { QuestionTitle } from "../QuestionTitle/QuestionTitle";
+import { SubTitle } from "../SubTitle/SubTitle";
+import { HorizontalSelect } from "./Quiz1.styled";
+
 
 export const Quiz1 = ({ currentLocale, setCurrentLocale }) => {
   const { route, id } = usePagePath();
@@ -46,26 +51,27 @@ export const Quiz1 = ({ currentLocale, setCurrentLocale }) => {
 
   return (
     <div>
-      <p>
-        <FormattedMessage id="question1" />
-      </p>
+      <QuestionTitle title={<FormattedMessage id="question1" />} />
+      <SubTitle title={<FormattedMessage id="q_1_sub" />}/>
 
-      {languages.map(lang => (
-        <div key={lang}>
-          <SingleSelectButton
-            item={lang}
-            route={route}
-            onClickHandler={handleLanguageClick}
-            currentLocale={currentLocale}
-            getLocaleFromLanguage={getLocaleFromLanguage}
-          />
-        </div>
-      ))}
+      <HorizontalSelect>
+        {languages.map(lang => (
+          <Fragment key={lang}>
+            <SingleSelectButton
+              item={lang}
+              route={route}
+              onClickHandler={handleLanguageClick}
+              currentLocale={currentLocale}
+              getLocaleFromLanguage={getLocaleFromLanguage}
+            />
+          </Fragment>
+        ))}
+      </HorizontalSelect>
     </div>
-  )
-}
+  );
+};
 
 Quiz1.propTypes = {
-  currentLocale: PropTypes.string.isRequired,
-  setCurrentLocale: PropTypes.func.isRequired,
+  currentLocale: PropTypes.string,
+  setCurrentLocale: PropTypes.func,
 };

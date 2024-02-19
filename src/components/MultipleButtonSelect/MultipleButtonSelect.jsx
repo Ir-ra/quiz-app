@@ -1,13 +1,15 @@
+import { Label } from "./MultipleButtonSelect.styles";
+
 export const MultipleButtonSelect = ({ label, onChangeHandler, className }) => {
   return (
-    <div>
-      <label
+    <Label>
+      <div
         className={className}
         onClick={onChangeHandler}
       >
         {label}
-      </label>
-    </div>)
+      </div>
+    </Label>)
 }
 
 export default MultipleButtonSelect;

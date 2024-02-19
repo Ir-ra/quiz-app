@@ -1,12 +1,12 @@
+import arrow from '../../assets/arrowLeft.svg';
+import { BackBtnStyles } from './GoBackButton.styled';
 export const GoBackButton = () => {
   return (
-    <button
+    <BackBtnStyles
       type="button"
-      className="goBack"
-      data-cy="backButton"
       onClick={() => window.history.back()}
     >
-      back
-    </button>
+      <img src={arrow} alt="" />
+    </BackBtnStyles>
   )
 }

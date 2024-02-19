@@ -4,6 +4,8 @@ import { AnswerContext } from "../../context/AnswerContext";
 import { useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 
+import {FormStyles, InputContainerStyles, InputStyles, Status} from './Form.styled';
+
 export const Form = () => {
   const [validationStatus, setValidationStatus] = useState('');
   const [emailValue, setEmailValue] = useState('');
@@ -35,31 +37,37 @@ export const Form = () => {
   };
 
   return (
-    <form
-      action=""
-      method="post"
-      style={{ display: 'flex', flexDirection: 'column' }}
-    >
-      <input
-        type="text"
-        name="email"
-        value={emailValue}
-        placeholder="Email address"
-        onChange={handleEmailChange}
-      />
-
-      {validationStatus === 'Validation' && <p>Validation</p>}
-      {validationStatus === 'Error' && <p>Error</p>}
-      {validationStatus === 'OK' && <p>OK</p>}
-      {validationStatus === '' && emailValue.trim() !== '' && <p>Validation</p>}
-
-      <FormattedMessage id="email_policy" />
-
-      <Button
-        buttonType='submit'
-        title={'Next'}
-        onClick={handleNextButtonClick}
-      />
-    </form>
+    <div className="forma">
+      <FormStyles
+        action=""
+        method="post"
+      >
+        <InputContainerStyles>
+          <InputStyles
+            type="text"
+            name="email"
+            value={emailValue}
+            placeholder="Your email"
+            onChange={handleEmailChange}
+            error={validationStatus === 'Error'}
+            autoComplete="off"
+          />
+        </InputContainerStyles>
+        {/* {validationStatus === 'Validation' && <Status>Validation</Status>} */}
+        {validationStatus === 'Error' && <Status>Invalid email</Status>}
+        {validationStatus === 'OK' && ''}
+        {/* {validationStatus === '' && emailValue.trim() !== '' && <Status>Validation</Status>} */}
+        <p>
+          <FormattedMessage id="email_policy" />
+        </p>
+        <Button
+          buttonType='submit'
+          title={'Next'}
+          onClick={handleNextButtonClick}
+          styles={validationStatus !== 'OK' ? 'outline' : ''}
+          disabled={validationStatus !== 'OK'}
+        />
+      </FormStyles>
+    </div>
   );
 }
