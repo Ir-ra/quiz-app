@@ -58,6 +58,7 @@
 }
 
 .circular {
+  /* animation: rotate 2s linear infinite; */
   height: 200px;
   width: 200px;
   margin: 0 auto;
@@ -69,6 +70,7 @@
   transition: stroke-dasharray 0.5s ease 0s, stroke 0.5s ease;
 }
 
+
 .loader-text {
   position: absolute;
   top: 50%;
@@ -78,3 +80,33 @@
   color: #000000;
 }
 
+/* ________________________ */
+
+#icon {
+  width: 50px;
+  height: 50px;
+  /* background-image: url("./assets/woman.png"); */
+  background-position: center;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-size: cover; 
+}
+
+/* q5 button */
+.selected {
+  background-color: gray;
+  color: white;
+}
+
+.lineLoader-container {
+  width: 100%; /* ширина контейнера лоадера */
+  height: 20px; /* висота контейнера лоадера */
+  border: 1px solid #ccc; /* рамка контейнера лоадера */
+  overflow: hidden; /* приховуємо зовнішній контент, який виходить за межі контейнера */
+}
+
+.lineLoader {
+  height: 100%; /* висота лоадера */
+  background-color: #4CAF50; /* колір лоадера */
+  transition: width 0.5s ease-in-out;
+}

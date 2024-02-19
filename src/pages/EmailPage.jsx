@@ -1,16 +1,7 @@
-import { useContext, useState } from "react"
-import { FormattedMessage } from "react-intl"
-import { NavLink } from "react-router-dom"
-import { AnswerContext } from "../context/AnswerContext";
+import { FormattedMessage } from "react-intl";
+import { Form } from "../components/Form/Form";
 
 export const EmailPage = () => {
-  const [emailValue, setEmailValue] = useState('');
-  const { saveEmailToLocalStorage } = useContext(AnswerContext);
-
-  const handelrNextButtonNAVLink = () => {
-    saveEmailToLocalStorage(emailValue)
-   };
-
   return (
     <>
       <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -18,29 +9,8 @@ export const EmailPage = () => {
         <br></br>
         <FormattedMessage id="email_subtext" />
 
-        <form
-          action=""
-          method="post"
-          style={{ display: 'flex', flexDirection: 'column' }}
-        >
-          <input
-            type="text"
-            name=""
-            value={emailValue}
-            onChange={(e) => setEmailValue(e.target.value)}
-          />
-
-          <FormattedMessage id="email_policy" />
-
-          <button type="submit" onClick={handelrNextButtonNAVLink}>
-            <NavLink to='/result'>
-              next with navLink
-            </NavLink>
-          </button>
-        </form>
-
+        <Form />
       </div>
     </>
-
   )
 }

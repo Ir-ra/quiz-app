@@ -3,19 +3,39 @@ import PropTypes from 'prop-types';
 import { useContext } from "react";
 import { AnswerContext } from "../context/AnswerContext";
 import { SingleSelectButton } from "./SingleSelectButton/SingleSelectButton";
-import { FormattedMessage } from "react-intl";
-import { getLocaleFromLanguage } from "../localization/localesUtils";
+import { FormattedMessage, useIntl } from "react-intl";
+import { LOCALES } from "../localization/locales";
 
 export const Quiz1 = ({ currentLocale, setCurrentLocale }) => {
   const { route, id } = usePagePath();
-  const { saveAnswerToLocalStorage } = useContext(AnswerContext)
-  const languages = ['english', 'french', 'german', 'spanish'];
+  const { saveAnswerToLocalStorage } = useContext(AnswerContext);
+  const intl = useIntl();
 
-  const handleLang = (locale, e) => {
+  const languages = [
+    intl.messages[`q_1_eng`],
+    intl.messages[`q_1_fr`],
+    intl.messages[`q_1_ge`],
+    intl.messages[`q_1_se`],
+  ];
+
+  const getLocaleFromLanguage = (language) => {
+    switch (language) {
+      case 'English':
+        return LOCALES.ENGLISH;
+      case 'French':
+        return LOCALES.FRENCH;
+      case 'German':
+        return LOCALES.GERMAN;
+      case 'Spanish':
+        return LOCALES.SPANISH;
+      default:
+        return LOCALES.ENGLISH;
+    }
+  };
+
+  const handleLang = (locale) => {
     setCurrentLocale(locale);
     localStorage.setItem("locale", locale);
-
-    setCurrentLocale(e.target.value);
   };
 
   const handleLanguageClick = (lang) => {

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { NavLink } from "react-router-dom";
 
-export const CirculeLoader = () => {
+export const CircleLoader = () => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -66,12 +65,6 @@ export const CirculeLoader = () => {
       </div>
 
       <FormattedMessage id="loading" />
-      {/* <button>
-        <NavLink to='/email'>
-        next
-        </NavLink>
-      </button> */}
     </div>
-
   )
 }

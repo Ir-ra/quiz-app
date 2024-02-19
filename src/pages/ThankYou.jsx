@@ -2,7 +2,9 @@ import { useContext } from "react";
 import { FormattedMessage } from "react-intl"
 import { AnswerContext } from "../context/AnswerContext";
 import { useNavigate } from "react-router-dom";
-import { generateCVSFile} from "../utils/cvs";
+import { generateCVSFile } from "../utils/cvs";
+import { Button } from "../components/Button/Button";
+import checkmark from '../assets/checkmark-144.svg';
 
 export const ThankYou = () => {
   const { clearAnswers, clearEmail } = useContext(AnswerContext);
@@ -28,16 +30,20 @@ export const ThankYou = () => {
         <FormattedMessage id="thanks" />
         <br></br>
         <FormattedMessage id="thanks_sub" />
-        check
 
+
+        <img src={checkmark} alt="" />
 
         <button onClick={handleDownloadCSV}>
           <FormattedMessage id="thanks_load" />
         </button>
 
-        <button onClick={handleRetakeQuiz}>
-          <FormattedMessage id="thanks_retake" />
-        </button>
+
+        <Button
+          buttonType='button'
+          title={<FormattedMessage id="thanks_retake" />}
+          onClick={handleRetakeQuiz}
+        />
       </p>
     </>
   )

@@ -8,13 +8,18 @@ import { Quiz4 } from '../components/Quiz4';
 import { Quiz5 } from '../components/Quiz5';
 
 import { NotFoundPage } from "./NotFoundPage";
-import { useState } from "react";
-
-// import { Woman } from '../assets/woman.png'
+import { useEffect, useState } from "react";
+import { LineLoader } from "../components/Loaders/LineLoader";
 
 export const QuizPage = ({ currentLocale, setCurrentLocale }) => {
-  const [showLoading, setShowLoading] = useState(true)
+  const [showLoading, setShowLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
   const { id } = useParams();
+
+  useEffect(() => {
+    const calculatedProgress = (parseInt(id) / 6.0) * 100;
+    setProgress(calculatedProgress);
+  }, [id]);
 
   let quizContent;
   const quizComponents = {
@@ -28,8 +33,16 @@ export const QuizPage = ({ currentLocale, setCurrentLocale }) => {
 
   return (
     <div>
-      {showLoading ? (<p>{`${id}/5`}</p>) : ''}
-         
+      {showLoading ? (
+        <>
+          <p>{`${id}/5`}</p>
+          <div style={{width: '400px'}}>
+            <LineLoader progress={progress} />
+          </div>
+        </>
+      ) : ''}
+
+
       {quizContent}
     </div>
   )

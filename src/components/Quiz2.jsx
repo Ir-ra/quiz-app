@@ -33,7 +33,6 @@ export const Quiz2 = () => {
       </p>
 
       {genders.map((gender, i) => {
-        console.log("gender", gender);
         return (
           <div key={gender}>
             <SingleSelectButton
