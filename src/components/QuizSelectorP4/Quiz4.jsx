@@ -60,6 +60,7 @@ export const Quiz4 = () => {
                     id={`myCheckbox${i}`}
                   />
                 </CheckboxWrapper>
+                
                 <ItemLabel
                   htmlFor={`myCheckbox${i}`}
                   checked={selectedOptions.includes(item.toString())}
@@ -69,6 +70,7 @@ export const Quiz4 = () => {
               </>
               }
               className={selectedOptions.includes(intl.messages[`q_4_opt${i + 1}`]) ? 'selected' : ''}
+              type='selected'
             />
           </Fragment>
         ))}

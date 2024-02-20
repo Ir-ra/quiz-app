@@ -10,6 +10,15 @@ import { CircleLoader } from "../CircleLoader";
 import { QuestionTitle } from "../QuestionTitle/QuestionTitle";
 import { SubTitle } from "../SubTitle/SubTitle";
 
+import warewolf from '../../assets/wolf.svg';
+import action from '../../assets/action.svg';
+import crown from '../../assets/crown.svg';
+import money from '../../assets/money.svg';
+import hearts from '../../assets/hearts.svg';
+import youngAdult from '../../assets/youngAdult.svg';
+import cowboy from '../../assets/cowboy.svg';
+import { TopicIcon, TopicItem, TopicText } from "./Quiz5.styled";
+
 export const Quiz5 = ({ showLoading, setShowLoading }) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
 
@@ -19,6 +28,17 @@ export const Quiz5 = ({ showLoading, setShowLoading }) => {
   const navigate = useNavigate();
 
   const arrOfTopics = Array.from({ length: 7 }, (_, index) => index + 1)
+
+  const topics = [
+    [intl.messages[`q_5_opt1`], warewolf],
+    [intl.messages[`q_5_opt2`], action],
+    [intl.messages[`q_5_opt3`], crown],
+    [intl.messages[`q_5_opt4`], money],
+    [intl.messages[`q_5_opt5`], hearts],
+    [intl.messages[`q_5_opt6`], youngAdult],
+    [intl.messages[`q_5_opt7`], cowboy],
+  ]
+ 
 
   const handleAnswerSelect = (answer) => {
     if (selectedOptions.includes(answer)) {
@@ -41,20 +61,37 @@ export const Quiz5 = ({ showLoading, setShowLoading }) => {
     <>
       {showLoading ? (
         <>
-        <QuestionTitle title={<FormattedMessage id="question5" />} />
-        <SubTitle title={<FormattedMessage id="q_5_sub" />}/>
+          <QuestionTitle title={<FormattedMessage id="question5" />} />
+          <SubTitle title={<FormattedMessage id="q_5_sub" />} />
+          
+          <div className="bubbleSelect">
+            {topics.map((topic, i) => {
+               console.log('topics', topic);
+               const top = intl.messages[`q_5_opt${i+1}`]
+            return (
+              <div key={topic}>
+                <MultipleButtonSelect
+                  item={topic}
 
-          {arrOfTopics.map(topic => (
-            <div key={topic}>
-              <MultipleButtonSelect
-                item={topic}
-                label={intl.messages[`q_5_opt${topic}`]}
-                onChangeHandler={() => handleAnswerSelect(intl.messages[`q_5_opt${topic}`])}
-                className={selectedOptions.includes(intl.messages[`q_5_opt${topic}`]) ? 'selected' : ''}
-                displayAsCheckbox={false}
-              />
-            </div>
-          ))}
+                  label= {
+                  <TopicItem>
+                  <TopicIcon src={topic[1]} alt="" />
+                  <TopicText>{top}</TopicText>
+                  </TopicItem>
+                  }
+
+                  onChangeHandler={() => handleAnswerSelect(intl.messages[`q_5_opt${i+1}`])}
+
+                  className={selectedOptions.includes(intl.messages[`q_5_opt${i+1}`]) ? 'bubbl' : ''}
+
+                  type='vertical'
+
+                  displayAsCheckbox={false}
+                />
+
+              </div>
+            )})}
+          </div>
 
           <Button
             buttonType='button'
