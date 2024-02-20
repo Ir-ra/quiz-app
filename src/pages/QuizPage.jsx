@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 import { Quiz1 } from '../components/QuizSelectorP1/Quiz1';
 import { Quiz2 } from '../components/QuizSelectorP2/Quiz2';
-import { Quiz3 } from '../components/Quiz3';
+import { Quiz3 } from '../components/QuizSelectorP3/Quiz3';
 import { Quiz4 } from '../components/QuizSelectorP4/Quiz4';
-import { Quiz5 } from '../components/Quiz5';
+import { Quiz5 } from '../components/QuizSelectorP5/Quiz5';
 
 import { NotFoundPage } from "./NotFoundPage";
 import { Header } from "../components/Header/Header";
@@ -33,14 +33,16 @@ export const QuizPage = ({ currentLocale, setCurrentLocale }) => {
   quizContent = quizComponents[id] || <NotFoundPage />;
 
   return (
-    <QuizPageStyles>
-      {showLoading && <Header progress={progress} activeId={id}/>}
-
-      <Fragment >
-        {quizContent}
-      </Fragment>
+    <>
+         {showLoading && <Header progress={progress} activeId={id}/>}
+      <QuizPageStyles>
+   
+        <Fragment >
+          {quizContent}
+        </Fragment>
       
-    </QuizPageStyles>
+      </QuizPageStyles>
+    </>
   )
 }
 

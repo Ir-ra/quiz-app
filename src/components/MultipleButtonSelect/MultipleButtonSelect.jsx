@@ -1,15 +1,10 @@
-import { Label } from "./MultipleButtonSelect.styles";
+import { MultiSelectBtnStyles } from "./MultipleButtonSelect.styles";
 
 export const MultipleButtonSelect = ({ label, onChangeHandler, className }) => {
   return (
-    <Label>
-      <div
-        className={className}
-        onClick={onChangeHandler}
-      >
+    <MultiSelectBtnStyles onClick={onChangeHandler} className={className}>
         {label}
-      </div>
-    </Label>)
+    </MultiSelectBtnStyles>)
 }
 
 export default MultipleButtonSelect;

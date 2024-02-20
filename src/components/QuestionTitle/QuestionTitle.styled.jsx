@@ -8,9 +8,5 @@ export const TitleSlyles = styled.h2`
   letter-spacing: -0.28px;
 
   text-align: center;
-
-  /* ${(props) => props.$type2  && `
-    color: red;
-  `} */
 `;
 

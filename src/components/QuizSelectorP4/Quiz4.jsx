@@ -7,13 +7,12 @@ import { AnswerContext } from "../../context/AnswerContext";
 import { MultipleButtonSelect } from "../MultipleButtonSelect";
 import { Button } from "../Button/Button";
 import { QuestionTitle } from "../QuestionTitle/QuestionTitle";
-import { ItemComponent } from "./Quiz4.styled";
 
+import { CheckboxWrapper,  ItemInput, ItemLabel } from "./Quiz4.styled";
 
 export const Quiz4 = () => {
   const { route, id } = usePagePath();
   const [selectedOptions, setSelectedOptions] = useState([]);
-  // const [isAnyOptionSelected, setIsAnyOptionSelected] = useState(true);
   const { saveAnswerToLocalStorage } = useContext(AnswerContext);
   const intl = useIntl();
   const navigate = useNavigate();
@@ -43,40 +42,46 @@ export const Quiz4 = () => {
 
   return (
     <>
-      <div>
-        <QuestionTitle title={<FormattedMessage id="question4" />} />
-      </div>
+      <QuestionTitle title={<FormattedMessage id="question4" />} />
 
+      <div className="horizontalSelect">
         {hatedItems.map((item, i) => (
           <Fragment key={item}>
             <MultipleButtonSelect
               item={item.toString()}
               label={
-                <ItemComponent>
-                  <label htmlFor={`myCheckbox${i}`}>{intl.messages[`q_4_opt${i + 1}`]}</label>
-                  <input
+                <>
+                <CheckboxWrapper>
+                  <ItemInput
                     type="checkbox"
                     value={item.toString()}
                     checked={selectedOptions.includes(item.toString())}
                     onChange={handleCheckboxChange}
                     id={`myCheckbox${i}`}
                   />
-                </ItemComponent>
+                </CheckboxWrapper>
+                <ItemLabel
+                  htmlFor={`myCheckbox${i}`}
+                  checked={selectedOptions.includes(item.toString())}
+                >
+                  {intl.messages[`q_4_opt${i + 1}`]}
+                </ItemLabel>
+              </>
               }
-              onChangeHandler={handleCheckboxChange}
               className={selectedOptions.includes(intl.messages[`q_4_opt${i + 1}`]) ? 'selected' : ''}
-              displayAsCheckbox={true}
             />
           </Fragment>
         ))}
+      </div>
 
-        <Button
-          buttonType='button'
-          title={'Next'}
-          onClick={handleNextButtonClick}
-          styles={selectedOptions.length === 0 ? 'outline' : ''}
-          disabled={selectedOptions.length === 0}
-        />
+
+      <Button
+        buttonType='button'
+        title={'Next'}
+        onClick={handleNextButtonClick}
+        styles={selectedOptions.length === 0 ? 'outline' : ''}
+        disabled={selectedOptions.length === 0}
+      />
     </>
   );
 };

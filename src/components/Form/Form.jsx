@@ -11,7 +11,6 @@ export const Form = () => {
   const [emailValue, setEmailValue] = useState('');
   const { saveEmailToLocalStorage } = useContext(AnswerContext);
   const navigate = useNavigate();
-
   const timerRef = useRef(null);
 
   const handleEmailChange = (e) => {
@@ -53,13 +52,12 @@ export const Form = () => {
             autoComplete="off"
           />
         </InputContainerStyles>
-        {/* {validationStatus === 'Validation' && <Status>Validation</Status>} */}
+
         {validationStatus === 'Error' && <Status>Invalid email</Status>}
         {validationStatus === 'OK' && ''}
-        {/* {validationStatus === '' && emailValue.trim() !== '' && <Status>Validation</Status>} */}
-        <p>
-          <FormattedMessage id="email_policy" />
-        </p>
+
+        <p><FormattedMessage id="email_policy" /></p>
+
         <Button
           buttonType='submit'
           title={'Next'}

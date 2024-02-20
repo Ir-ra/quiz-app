@@ -73,6 +73,20 @@ select {
   cursor: pointer;
 }
 
+.checkbox {
+  display: inline-block; 
+  height: 20px;
+  width: 20px;
+  background: #fff;
+  border: 2px #ddd solid;
+  margin-right: 4px;
+}
+
+.checkbox--active {
+  border-color: purple;
+  background: purple;
+}
+
 input::-ms-clear {
   display: none;
 }
@@ -85,7 +99,9 @@ button:active {
 }
 
 label {
+  display: flex;
   cursor: pointer;
+  width: 100%;
 }
 
 
@@ -97,11 +113,13 @@ body {
   margin-bottom: 56px;
 }
 
-
-.selected {
-  background-color: gray;
-  color: white;
+.horizontalSelect {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 0 0;
 }
+
 
 #thank {
 font-family: "Niconne", cursive;
@@ -148,3 +166,5 @@ color: var(--textColor);
   font-size: 16px;
   color: #000000;
 }
+
+

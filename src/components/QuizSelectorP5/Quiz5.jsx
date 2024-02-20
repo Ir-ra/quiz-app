@@ -1,14 +1,14 @@
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
-import { AnswerContext } from "../context/AnswerContext";
-import usePagePath from "../hooks/usePagePath";
+import { AnswerContext } from "../../context/AnswerContext";
+import usePagePath from "../../hooks/usePagePath";
 
-import { MultipleButtonSelect } from "./MultipleButtonSelect";
-import { Button } from "./Button/Button";
-import { CircleLoader } from "./CircleLoader";
-import { QuestionTitle } from "./QuestionTitle/QuestionTitle";
-import { SubTitle } from "./SubTitle/SubTitle";
+import { MultipleButtonSelect } from "../MultipleButtonSelect";
+import { Button } from "../Button/Button";
+import { CircleLoader } from "../CircleLoader";
+import { QuestionTitle } from "../QuestionTitle/QuestionTitle";
+import { SubTitle } from "../SubTitle/SubTitle";
 
 export const Quiz5 = ({ showLoading, setShowLoading }) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -38,13 +38,11 @@ export const Quiz5 = ({ showLoading, setShowLoading }) => {
   };
 
   return (
-    <div>
+    <>
       {showLoading ? (
         <>
         <QuestionTitle title={<FormattedMessage id="question5" />} />
-
         <SubTitle title={<FormattedMessage id="q_5_sub" />}/>
-
 
           {arrOfTopics.map(topic => (
             <div key={topic}>
@@ -69,6 +67,6 @@ export const Quiz5 = ({ showLoading, setShowLoading }) => {
       ) : (
         <CircleLoader />
       )}
-    </div>
+    </>
   );
 };

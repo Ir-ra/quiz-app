@@ -22,9 +22,6 @@ export const SelectStyles = styled.button`
 `;
 
 export const Selectlink = styled(NavLink)`
-  /* display: inherit;
-  align-items: center;
-  text-decoration: none; */
   display: inherit;
   align-items: center;
   text-decoration: none;
