@@ -1,5 +1,5 @@
 import React from 'react';
-import { MainBtnStyles } from './Button.styled';
+import { ButtonTextStyles, MainBtnStyles } from './Button.styled';
 
 export const Button = ({ title, onClick, buttonType, styles, disabled }) => {
   return (
@@ -10,7 +10,7 @@ export const Button = ({ title, onClick, buttonType, styles, disabled }) => {
       $btntype={styles}
       disabled={disabled}
     >
-      {title}
+      <ButtonTextStyles>{title}</ButtonTextStyles>
     </MainBtnStyles>
   );
 };

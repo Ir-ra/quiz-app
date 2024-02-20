@@ -10,7 +10,7 @@ import winkImage from '../../assets/wink.png';
 import { SingleSelectButton } from "../SingleSelectButton/SingleSelectButton";
 import { QuestionTitle } from "../QuestionTitle/QuestionTitle";
 import { SubTitle } from "../SubTitle/SubTitle";
-import { GenderIcon, GenderItem, VerticalSelect } from "./Quiz2.styled";
+import { GenderIcon, GenderItem, QuestionText, VerticalSelect } from "./Quiz2.styled";
 
 export const Quiz2 = () => {
   const { route, id } = usePagePath();
@@ -31,9 +31,11 @@ export const Quiz2 = () => {
 
   return (
     <div>
-      <QuestionTitle title={<FormattedMessage id="question2" />} />
 
-      <SubTitle title={<FormattedMessage id="q_2_sub" />}/>
+      <QuestionText>
+        <QuestionTitle title={<FormattedMessage id="question2" />} />
+        <SubTitle title={<FormattedMessage id="q_2_sub" />} />
+      </QuestionText>
 
       <VerticalSelect>
         {genders.map((gender, i) => {

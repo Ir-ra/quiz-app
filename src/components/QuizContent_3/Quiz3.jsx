@@ -5,6 +5,7 @@ import { useContext } from "react";
 
 import { SingleSelectButton } from "../SingleSelectButton/SingleSelectButton";
 import { QuestionTitle } from "../QuestionTitle/QuestionTitle";
+import { HorizontalSelect } from "./Quiz3.styled";
 
 export const Quiz3 = () => {
   const { route, id } = usePagePath();
@@ -21,7 +22,7 @@ export const Quiz3 = () => {
     <div>
       <QuestionTitle title={<FormattedMessage id="question3" />} />
 
-      <div className="horizontalSelect">
+      <HorizontalSelect>
         {ages.map(age => (
           <div key={age}>
             <SingleSelectButton
@@ -31,7 +32,7 @@ export const Quiz3 = () => {
             />
           </div>
         ))}
-      </div>
+      </HorizontalSelect>
     </div>
   )
 }

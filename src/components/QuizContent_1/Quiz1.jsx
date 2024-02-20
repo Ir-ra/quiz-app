@@ -1,5 +1,4 @@
 import usePagePath from "../../hooks/usePagePath";
-import PropTypes from 'prop-types';
 import { Fragment, useContext } from "react";
 import { AnswerContext } from "../../context/AnswerContext";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -8,6 +7,7 @@ import { LOCALES } from "../../localization/locales";
 import { SingleSelectButton } from "../SingleSelectButton/SingleSelectButton";
 import { QuestionTitle } from "../QuestionTitle/QuestionTitle";
 import { SubTitle } from "../SubTitle/SubTitle";
+import { HorizontalSelect, QuestionText } from "./Quiz1.styled";
 
 export const Quiz1 = ({ currentLocale, setCurrentLocale }) => {
   const { route, id } = usePagePath();
@@ -49,10 +49,12 @@ export const Quiz1 = ({ currentLocale, setCurrentLocale }) => {
 
   return (
     <div>
-      <QuestionTitle title={<FormattedMessage id="question1" />} />
-      <SubTitle title={<FormattedMessage id="q_1_sub" />}/>
+      <QuestionText>
+        <QuestionTitle title={<FormattedMessage id="question1" />} />
+        <SubTitle title={<FormattedMessage id="q_1_sub" />} />
+      </QuestionText>
 
-      <div className="horizontalSelect">
+      <HorizontalSelect>
         {languages.map(lang => (
           <Fragment key={lang}>
             <SingleSelectButton
@@ -64,12 +66,7 @@ export const Quiz1 = ({ currentLocale, setCurrentLocale }) => {
             />
           </Fragment>
         ))}
-      </div>
+      </HorizontalSelect>
     </div>
   );
-};
-
-Quiz1.propTypes = {
-  currentLocale: PropTypes.string,
-  setCurrentLocale: PropTypes.func,
 };

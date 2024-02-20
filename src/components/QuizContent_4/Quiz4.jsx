@@ -4,11 +4,11 @@ import { Fragment, useContext, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { AnswerContext } from "../../context/AnswerContext";
 
-import { MultipleButtonSelect } from "../MultipleButtonSelect";
+import { MultipleButtonSelect } from "../MultipleSelectButton/MultipleButtonSelect";
 import { Button } from "../Button/Button";
 import { QuestionTitle } from "../QuestionTitle/QuestionTitle";
 
-import { CheckboxWrapper,  ItemInput, ItemLabel } from "./Quiz4.styled";
+import {  ItemInput, ItemLabel, HorizontalSelect } from "./Quiz4.styled";
 
 export const Quiz4 = () => {
   const { route, id } = usePagePath();
@@ -21,10 +21,8 @@ export const Quiz4 = () => {
     const { value, checked } = event.target;
     if (checked) {
       setSelectedOptions([...selectedOptions, value]);
-      console.log('checked');
     } else {
       setSelectedOptions(selectedOptions.filter(option => option !== value));
-      console.log('UnCheck');
     }
   };
 
@@ -44,38 +42,35 @@ export const Quiz4 = () => {
     <>
       <QuestionTitle title={<FormattedMessage id="question4" />} />
 
-      <div className="horizontalSelect">
+      <HorizontalSelect>
         {hatedItems.map((item, i) => (
           <Fragment key={item}>
             <MultipleButtonSelect
               item={item.toString()}
               label={
                 <>
-                <CheckboxWrapper>
-                  <ItemInput
-                    type="checkbox"
-                    value={item.toString()}
+                    <ItemInput
+                      type="checkbox"
+                      value={item.toString()}
+                      checked={selectedOptions.includes(item.toString())}
+                      onChange={handleCheckboxChange}
+                      id={`myCheckbox${i}`}
+                    />
+
+                  <ItemLabel
+                    htmlFor={`myCheckbox${i}`}
                     checked={selectedOptions.includes(item.toString())}
-                    onChange={handleCheckboxChange}
-                    id={`myCheckbox${i}`}
-                  />
-                </CheckboxWrapper>
-                
-                <ItemLabel
-                  htmlFor={`myCheckbox${i}`}
-                  checked={selectedOptions.includes(item.toString())}
-                >
-                  {intl.messages[`q_4_opt${i + 1}`]}
-                </ItemLabel>
-              </>
+                  >
+                    {intl.messages[`q_4_opt${i + 1}`]}
+                  </ItemLabel>
+                </>
               }
               className={selectedOptions.includes(intl.messages[`q_4_opt${i + 1}`]) ? 'selected' : ''}
               type='selected'
             />
           </Fragment>
         ))}
-      </div>
-
+      </HorizontalSelect>
 
       <Button
         buttonType='button'

@@ -32,6 +32,9 @@ export const ItemInput = styled.input`
   opacity: 0;
 `;
 
-export const CheckboxWrapper = styled.div`
-  position: relative;
+export const HorizontalSelect = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 0 0;
 `;

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { SelectStyles, Selectlink } from "./SingleSelectButton.styled";
 
 export const SingleSelectButton = ({
@@ -19,9 +18,3 @@ export const SingleSelectButton = ({
     </SelectStyles>
   )
 }
-
-SingleSelectButton.propTypes = {
-  item: PropTypes.any,
-  route: PropTypes.string.isRequired,
-  onClickHandler: PropTypes.func.isRequired,
-};

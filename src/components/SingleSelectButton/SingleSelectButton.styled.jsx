@@ -4,7 +4,6 @@ import styled from "styled-components";
 export const SelectStyles = styled.button`
   display: flex;
   margin: auto;
-  background-color: ${props => props.clicked ? 'red' : 'var(--purple)'};
   width: 100%;
   border-radius: 16px;
   height: 60px;
@@ -14,6 +13,8 @@ export const SelectStyles = styled.button`
 
   font-weight: 600;
   line-height: 24px;
+
+  background-color: ${props => props.clicked ? 'red' : 'var(--purple)'};
 
   ${(props) => props.$type === "vertical" && `
     height: 144px;

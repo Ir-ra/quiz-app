@@ -1,16 +1,17 @@
-import { useContext, useRef, useState } from "react";
-import { Button } from "../Button/Button"
-import { AnswerContext } from "../../context/AnswerContext";
-import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
 import { FormattedMessage } from "react-intl";
 
-import {FormStyles, InputContainerStyles, InputStyles, Status} from './Form.styled';
+import {
+  FormAndButtonContainer,
+  FormStyles,
+  InputContainerStyles,
+  InputStyles,
+  PolicyText,
+  Status
+} from './Form.styled';
 
-export const Form = () => {
-  const [validationStatus, setValidationStatus] = useState('');
-  const [emailValue, setEmailValue] = useState('');
-  const { saveEmailToLocalStorage } = useContext(AnswerContext);
-  const navigate = useNavigate();
+
+export const Form = ({ emailValue, setEmailValue, validationStatus, setValidationStatus }) => {
   const timerRef = useRef(null);
 
   const handleEmailChange = (e) => {
@@ -30,42 +31,33 @@ export const Form = () => {
     }, 1000);
   };
 
-  const handleNextButtonClick = () => {
-    saveEmailToLocalStorage(emailValue);
-    navigate('/result');
-  };
-
   return (
-    <div className="forma">
+    <FormAndButtonContainer>
       <FormStyles
         action=""
         method="post"
       >
-        <InputContainerStyles>
-          <InputStyles
-            type="text"
-            name="email"
-            value={emailValue}
-            placeholder="Your email"
-            onChange={handleEmailChange}
-            error={validationStatus === 'Error'}
-            autoComplete="off"
-          />
-        </InputContainerStyles>
+        <div>
+          <InputContainerStyles>
+            <InputStyles
+              type="text"
+              name="email"
+              value={emailValue}
+              placeholder="Your email"
+              onChange={handleEmailChange}
+              error={validationStatus === 'Error' ? 'true' : undefined}
+              autoComplete="off"
+            />
+          </InputContainerStyles>
 
-        {validationStatus === 'Error' && <Status>Invalid email</Status>}
-        {validationStatus === 'OK' && ''}
+          {validationStatus === 'Error' && <Status>Invalid email</Status>}
+          {validationStatus === 'OK' && ''}
 
-        <p><FormattedMessage id="email_policy" /></p>
-
-        <Button
-          buttonType='submit'
-          title={'Next'}
-          onClick={handleNextButtonClick}
-          styles={validationStatus !== 'OK' ? 'outline' : ''}
-          disabled={validationStatus !== 'OK'}
-        />
+          <PolicyText>
+            <FormattedMessage id="email_policy" />
+          </PolicyText>
+        </div>
       </FormStyles>
-    </div>
+    </FormAndButtonContainer>
   );
 }

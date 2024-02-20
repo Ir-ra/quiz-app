@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const FormStyles = styled.form`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   position: relative;
   box-sizing: border-box;
@@ -24,7 +25,7 @@ export const InputStyles = styled.input`
   padding: 20px;
   border-radius: 16px;
 
-  border: 2px solid ${props => props.error ? 'var(--pink)' : 'var(--purple)'};
+  border: 2px solid ${props => props.$error ? 'var(--pink)' : 'var(--purple)'};
 
   &::placeholder {
   font-family: "Albert Sans";
@@ -45,4 +46,15 @@ export const Status = styled.p`
   top: 132px;
   left: 30px;
   color: red;
+`;
+
+export const FormAndButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+`;
+
+export const PolicyText = styled.p`
+  text-align: center;
 `;

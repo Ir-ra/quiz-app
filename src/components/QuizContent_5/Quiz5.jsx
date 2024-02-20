@@ -4,9 +4,9 @@ import { useContext, useState } from "react";
 import { AnswerContext } from "../../context/AnswerContext";
 import usePagePath from "../../hooks/usePagePath";
 
-import { MultipleButtonSelect } from "../MultipleButtonSelect";
+import { MultipleButtonSelect } from "../MultipleSelectButton/MultipleButtonSelect";
 import { Button } from "../Button/Button";
-import { CircleLoader } from "../CircleLoader";
+import { CircleLoader } from "../Loaders/CircleLoader";
 import { QuestionTitle } from "../QuestionTitle/QuestionTitle";
 import { SubTitle } from "../SubTitle/SubTitle";
 
@@ -17,7 +17,8 @@ import money from '../../assets/money.svg';
 import hearts from '../../assets/hearts.svg';
 import youngAdult from '../../assets/youngAdult.svg';
 import cowboy from '../../assets/cowboy.svg';
-import { TopicIcon, TopicItem, TopicText } from "./Quiz5.styled";
+
+import { BubbleSelectStyles, CirleContainer, QuestionText, TopicIcon, TopicItem, TopicText } from "./Quiz5.styled";
 
 export const Quiz5 = ({ showLoading, setShowLoading }) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -26,8 +27,6 @@ export const Quiz5 = ({ showLoading, setShowLoading }) => {
   const { saveAnswerToLocalStorage } = useContext(AnswerContext);
   const { id } = usePagePath();
   const navigate = useNavigate();
-
-  const arrOfTopics = Array.from({ length: 7 }, (_, index) => index + 1)
 
   const topics = [
     [intl.messages[`q_5_opt1`], warewolf],
@@ -38,7 +37,6 @@ export const Quiz5 = ({ showLoading, setShowLoading }) => {
     [intl.messages[`q_5_opt6`], youngAdult],
     [intl.messages[`q_5_opt7`], cowboy],
   ]
- 
 
   const handleAnswerSelect = (answer) => {
     if (selectedOptions.includes(answer)) {
@@ -61,36 +59,34 @@ export const Quiz5 = ({ showLoading, setShowLoading }) => {
     <>
       {showLoading ? (
         <>
-          <QuestionTitle title={<FormattedMessage id="question5" />} />
-          <SubTitle title={<FormattedMessage id="q_5_sub" />} />
-          
-          <div className="bubbleSelect">
-            {topics.map((topic, i) => {
-               console.log('topics', topic);
-               const top = intl.messages[`q_5_opt${i+1}`]
-            return (
-              <div key={topic}>
-                <MultipleButtonSelect
-                  item={topic}
+          <div>
+            <QuestionText>
+              <QuestionTitle title={<FormattedMessage id="question5" />} />
+              <SubTitle title={<FormattedMessage id="q_5_sub" />} />
+            </QuestionText>
 
-                  label= {
-                  <TopicItem>
-                  <TopicIcon src={topic[1]} alt="" />
-                  <TopicText>{top}</TopicText>
-                  </TopicItem>
-                  }
+            <BubbleSelectStyles>
+              {topics.map((topic, i) => {
+                const top = intl.messages[`q_5_opt${i + 1}`]
 
-                  onChangeHandler={() => handleAnswerSelect(intl.messages[`q_5_opt${i+1}`])}
-
-                  className={selectedOptions.includes(intl.messages[`q_5_opt${i+1}`]) ? 'bubbl' : ''}
-
-                  type='vertical'
-
-                  displayAsCheckbox={false}
-                />
-
-              </div>
-            )})}
+                return (
+                  <div key={topic}>
+                    <MultipleButtonSelect
+                      label={
+                        <TopicItem>
+                          <TopicIcon src={topic[1]} alt="" />
+                          <TopicText>{top}</TopicText>
+                        </TopicItem>
+                      }
+                      onChangeHandler={() => handleAnswerSelect(intl.messages[`q_5_opt${i + 1}`])}
+                      className={selectedOptions.includes(intl.messages[`q_5_opt${i + 1}`]) ? 'bubbl' : ''}
+                      type='vertical'
+                      displayAsCheckbox={false}
+                    />
+                  </div>
+                )
+              })}
+            </BubbleSelectStyles>
           </div>
 
           <Button
@@ -102,7 +98,9 @@ export const Quiz5 = ({ showLoading, setShowLoading }) => {
           />
         </>
       ) : (
-        <CircleLoader />
+        <CirleContainer>
+          <CircleLoader />
+        </CirleContainer>
       )}
     </>
   );

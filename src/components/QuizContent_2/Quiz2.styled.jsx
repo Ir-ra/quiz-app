@@ -24,3 +24,9 @@ export const GenderIcon = styled.img`
   background-repeat: no-repeat;
   background-size: cover;
 `;
+
+export const QuestionText = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;

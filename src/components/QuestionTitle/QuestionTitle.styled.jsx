@@ -6,7 +6,5 @@ export const TitleSlyles = styled.h2`
   font-weight: 700;
   line-height: 1.27;
   letter-spacing: -0.28px;
-
   text-align: center;
 `;
-

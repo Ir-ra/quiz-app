@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { SubText } from "./SubText/SubText";
+import { SubText } from "../SubText/SubText";
+
+import { LoaderContainer, Loader, Circular, Path, LoaderText } from './CircleLoader.styled'
 
 export const CircleLoader = () => {
   const [progress, setProgress] = useState(0);
@@ -25,47 +27,45 @@ export const CircleLoader = () => {
 
 
   return (
-    <div className="loader-container">
-      <div className="loader">
-        <svg className="circular" viewBox="25 25 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg"
+    <LoaderContainer>
+      <Loader>
+        <Circular viewBox="25 25 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg"
           style={{ transform: 'rotate(-90deg)' }}
         >
           <circle
-          id="grey"
+            id="grey"
             cx="50"
             cy="50"
             r="20"
             fill="transparent"
-            strokeWidth="5"
+            strokeWidth="2"
             strokeMiterlimit="10"
             strokeLinecap="round"
-            
-            stroke="#7a7a7a"
+
+            stroke="var(--white)"
           />
-          
-          <circle
-            className="path"
+
+          <Path
             cx="50"
             cy="50"
             r="20"
             fill="transparent"
-            strokeWidth="5"
+            strokeWidth="2"
             strokeMiterlimit="10"
             strokeLinecap="round"
-            
-            stroke="#76e5b1"
+
+            stroke="var(--pink)"
             style={{
               strokeDasharray: '126',
               strokeDashoffset: `${126 - (progress / 100) * 126}`,
             }}
           />
-        </svg>
+        </Circular>
 
+        <LoaderText className="loader-text">{progress}%</LoaderText>
+      </Loader>
 
-        <span className="loader-text">{progress}%</span>
-      </div>
-
-      <SubText title={<FormattedMessage id="loading" />}/>
-    </div>
+      <SubText title={<FormattedMessage id="loading" />} />
+    </LoaderContainer>
   )
 }

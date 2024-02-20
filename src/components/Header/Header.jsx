@@ -9,8 +9,7 @@ export const Header = ({ progress }) => {
   const { id } = useParams();
 
   return (
-    <HeaderStyles id='header'>
-
+    <HeaderStyles>
       <IdLine>
         <BtnBlock>
           {id > 2 && <GoBackButton />}

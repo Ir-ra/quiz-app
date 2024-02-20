@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MultiSelectBtnStyles = styled.button`
+export const MultiStylesSelectBtn = styled.button`
   display: flex;
   margin: auto;
   background-color: var(--purple);

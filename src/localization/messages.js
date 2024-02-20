@@ -63,7 +63,6 @@ export const messages = {
 
     // questions
     question1: `Quelle est votre langue préférée?`,
-    // question1: `What is your preferred language?`,
     question2: `À quel genre vous identifiez-vous?`,
     question3: `Quel est votre âge?`,
     question4: `Qu'est-ce que vous détestez le plus dans un livre?`,
@@ -121,7 +120,6 @@ export const messages = {
 
     // questions
     question1: `Was ist Ihre bevorzugte Sprache?`,
-    // question1: `What is your preferred language?`,
     question2: `Mit welchem Geschlecht identifizieren Sie sich?`,
     question3: `Wie alt sind Sie?`,
     question4: `Was hasst du an einem Buch am meisten?`,
@@ -179,7 +177,6 @@ export const messages = {
 
     // questions
     question1: `¿Cuál es tu idioma preferido?`,
-    // question1: `What is your preferred language?`,
     question2: `Con qué género te identificas?`,
     question3: `¿Cuál es tu edad?`,
     question4: `¿Qué es lo que más odias en un libro?`,

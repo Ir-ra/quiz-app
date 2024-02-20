@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
-export const HeaderStyles = styled.div`
+export const HeaderStyles = styled.nav`
   font-family: "Albert Sans", sans-serif;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  padding-bottom: 45px;
 `;
 
 export const IdLine = styled.span`
