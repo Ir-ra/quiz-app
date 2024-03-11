@@ -42,7 +42,9 @@ export const Quiz5 = ({ showLoading, setShowLoading }) => {
     if (selectedOptions.includes(answer)) {
       setSelectedOptions(selectedOptions.filter(item => item !== answer));
     } else {
-      setSelectedOptions([...selectedOptions, answer]);
+      if (selectedOptions.length < 3) {
+        setSelectedOptions([...selectedOptions, answer]);
+      }
     }
   };
 

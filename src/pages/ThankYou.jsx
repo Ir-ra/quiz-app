@@ -17,8 +17,9 @@ import {
   ThankYouStyles,
   ThanksText
 } from "./ThankYou.styled";
+import { LOCALES } from "../localization/locales";
 
-export const ThankYou = () => {
+export const ThankYou = ({setCurrentLocale}) => {
   const { clearAnswers, clearEmail } = useContext(AnswerContext);
   const { email, answers } = useContext(AnswerContext);
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ export const ThankYou = () => {
   const handleRetakeQuiz = () => {
     clearAnswers();
     clearEmail();
+    setCurrentLocale(LOCALES.ENGLISH)
     localStorage.setItem("locale", '');
     navigate('/quiz/1');
   };

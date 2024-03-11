@@ -30,7 +30,7 @@ function App() {
             element={<QuizPage currentLocale={currentLocale} setCurrentLocale={setCurrentLocale} />}
           />
           <Route path="/email" element={<EmailPage />} />
-          <Route path="/result" element={<ThankYou />} />
+          <Route path="/result" element={<ThankYou setCurrentLocale={setCurrentLocale}/>} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </AnswerProvider>

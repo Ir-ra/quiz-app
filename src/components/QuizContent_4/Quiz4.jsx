@@ -8,7 +8,7 @@ import { MultipleButtonSelect } from "../MultipleSelectButton/MultipleButtonSele
 import { Button } from "../Button/Button";
 import { QuestionTitle } from "../QuestionTitle/QuestionTitle";
 
-import {  ItemInput, ItemLabel, HorizontalSelect } from "./Quiz4.styled";
+import { ItemInput, ItemLabel, HorizontalSelect } from "./Quiz4.styled";
 
 export const Quiz4 = () => {
   const { route, id } = usePagePath();

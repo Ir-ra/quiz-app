@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { FormattedMessage } from "react-intl";
 
 import {
@@ -8,27 +7,21 @@ import {
   InputStyles,
   PolicyText,
   Status
-} from './Form.styled';
+} from './EmailForm.styled';
 
 
-export const Form = ({ emailValue, setEmailValue, validationStatus, setValidationStatus }) => {
-  const timerRef = useRef(null);
-
+export const EmailForm = ({ emailValue, setEmailValue, validationStatus, setValidationStatus }) => {
   const handleEmailChange = (e) => {
     const value = e.target.value;
     setEmailValue(value);
-
-    clearTimeout(timerRef.current);
 
     if (value.trim() === '') {
       setValidationStatus('');
       return;
     }
 
-    timerRef.current = setTimeout(() => {
       const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
       setValidationStatus(isValid ? 'OK' : 'Error');
-    }, 1000);
   };
 
   return (

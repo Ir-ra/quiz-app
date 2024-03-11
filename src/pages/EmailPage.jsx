@@ -3,7 +3,7 @@ import { FormattedMessage } from "react-intl";
 import { AnswerContext } from "../context/AnswerContext";
 import { useNavigate } from "react-router-dom";
 
-import { Form } from "../components/Form/Form";
+import { EmailForm } from "../components/EmailForm/EmailForm";
 import { QuestionTitle } from "../components/QuestionTitle/QuestionTitle";
 import { SubText } from "../components/SubText/SubText";
 import { Button } from "../components/Button/Button";
@@ -28,7 +28,7 @@ export const EmailPage = () => {
         <QuestionTitle title={<FormattedMessage id="email" />} />
         <SubText title={<FormattedMessage id="email_subtext" />} />
 
-        <Form
+        <EmailForm
           emailValue={emailValue}
           setEmailValue={setEmailValue}
           validationStatus={validationStatus}
