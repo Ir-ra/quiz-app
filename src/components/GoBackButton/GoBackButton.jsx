@@ -6,7 +6,7 @@ export const GoBackButton = () => {
       type="button"
       onClick={() => window.history.back()}
     >
-      <img src={arrow} alt="" />
+      <img src={arrow} alt="arrow" />
     </BackBtnStyles>
   )
 }

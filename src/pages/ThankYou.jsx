@@ -45,7 +45,7 @@ export const ThankYou = ({setCurrentLocale}) => {
           <SubText title={<FormattedMessage id="thanks_sub" />} />
         </TextContainer>
 
-        <CheckMarkStyles src={checkmark} alt="" />
+        <CheckMarkStyles src={checkmark} alt="checkmark" />
 
         <DownloadButton onClick={handleDownloadCSV}>
           <img src={download} alt="download icon" />

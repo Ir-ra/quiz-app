@@ -76,7 +76,7 @@ export const Quiz5 = ({ showLoading, setShowLoading }) => {
                     <MultipleButtonSelect
                       label={
                         <TopicItem>
-                          <TopicIcon src={topic[1]} alt="" />
+                          <TopicIcon src={topic[1]} alt={`${topic}`} />
                           <TopicText>{top}</TopicText>
                         </TopicItem>
                       }
