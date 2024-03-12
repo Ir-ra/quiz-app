@@ -2,7 +2,7 @@
   "name": "quiz-app",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://Ir-ra.github.io/quiz-app/",
+  "homepage": "https://Ir-ra.github.io/",
   "type": "module",
   "scripts": {
     "predeploy" : "npm run build",
