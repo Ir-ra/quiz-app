@@ -17,7 +17,6 @@ Mobile quiz app with localization support for English, French, German, and Spani
 * Navigate to the project directory in your terminal
 * Run `npm install` in your terminal
 * Run `npm run dev` in terminal
-* Open http://localhost:5173/ in your browser
 
 ## Dependencies
 * Node v18.19.0 or higher
