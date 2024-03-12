@@ -24,7 +24,7 @@ function App() {
     >
       <AnswerProvider>
         <Routes>
-          <Route path="/" element={<Navigate to="/quiz/1" replace />} />
+          <Route path="/quiz-app/" element={<Navigate to="/quiz/1" replace />} />
           <Route
             path="/quiz/:id"
             element={<QuizPage currentLocale={currentLocale} setCurrentLocale={setCurrentLocale} />}
