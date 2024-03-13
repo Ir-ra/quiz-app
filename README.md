@@ -2,6 +2,9 @@
 
 Mobile quiz app with localization support for English, French, German, and Spanish languages. Users choose their preferred language at the beginning of the game, answer various types of questions. Upon completing the quiz, users input their email address, then they proceed to the final screen, where they can either retake the quiz or download their answers in a CSV file format. The CSV file contains question numbers, question texts, question types, and user answers.
 
+## DEMO
+[DEMO LINK](https://ir-ra.github.io/quiz-app/)
+
 ## Technologies used
 * React.js
 * JSX
